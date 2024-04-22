@@ -17,7 +17,7 @@ import pandas as pd
 import time
 
 st.set_page_config(
-     page_title="ACO Simulation",
+     page_title="Smart Colony Optimization",
      page_icon="🐜",
      layout="wide",
 )
@@ -41,9 +41,9 @@ plot_utils = PlotUtils(environment)
 distances = []
 
 
-st.title("🐜 ACO Simulation:")
+st.title("🐜 Stigmergic Interaction for Smart Colony Optimization:")
 
-with st.expander("What is ACO? [click here]"): 
+with st.expander("What is Colony Optimisation? [click here]"): 
     st.write("""
     Ant Colony Optimization (ACO) is a probabilistic technique used in optimization problems, 
     inspired by the behavior of ants searching for food. Initially proposed by Marco Dorigo in 1992, 
@@ -129,7 +129,7 @@ st.info("Ant Colony Optimisation - please set your parameters in the left sideba
 
 
 with st.expander("See optimal Solution for this case:"):
-    st.image(r"att48-specs\att48.opt.png")
+    st.image(r"att48-specs\att48_opt.png")
     tourfile = (r"att48-specs\att48.opt.tour")
     with open(tourfile, 'r') as file:
         file_contents = file.read()

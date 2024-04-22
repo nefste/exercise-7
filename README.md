@@ -10,12 +10,15 @@ It allows users to interactively configure parameters, run simulations, and visu
 
 - **Educational Content**: Expands on the theoretical background of ACO, helping users understand the underlying principles through interactive text and mathematical formulas.
 - **Interactive Configuration**: Users can set various parameters such as ant population, number of iterations, and ACO coefficients (alpha, beta, and rho) through an intuitive sidebar.
+
 ![Interactive Configuration](gif_1.gif)
 
 - **Dynamic Visualization**: The application provides real-time visual feedback on the optimization process, showing both the path efficiency and the convergence over time.
+
 ![Dynamic Visualization](gif_2.gif)
 
 - **Simulation Controls**: Users can start and stop the simulation at will, allowing for exploratory analysis and parameter tuning.
+
 ![Dynamic Visualization](gif_3.gif)
 
 ## How to Run
@@ -27,7 +30,7 @@ It allows users to interactively configure parameters, run simulations, and visu
     ```
 3. Run the app:
     ```bash
-    streamlit run your_script_name.py
+    streamlit run app.py
     ```
 
 
@@ -48,37 +51,6 @@ pandas==2.0.3
 plotly==5.18.0
 streamlit==1.28.2
 tsplib95==0.7.1
-
-## Repository Structure
-ant.py
-ant_colony.py
-app.py
-
-att48-specs
-	- att48.opt.png
-	- att48.opt.tour
-	- att48.tsp
-	- att48_coordinates.txt
-	- att48_distance_matrix.txt
-environment.py
-
-plane_plot.py
-plot_utils.py
-
-
-README.md
-requirements.txt
-
-aco_simulation_results.xlsx
-aco_simulation_results_backup.xlsx
-
-
-ACO_Parameter_Simulation.png
-alpha.png
-gif_1.gif
-gif_2.gif
-gif_3.gif
-
 
 
 
