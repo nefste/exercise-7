@@ -15,6 +15,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import time
+import streamlit.components.v1 as components
+
 
 st.set_page_config(
      page_title="Smart Colony Optimization",
@@ -41,9 +43,15 @@ plot_utils = PlotUtils(environment)
 distances = []
 
 
-st.title("🐜 Stigmergic Interaction for Smart Colony Optimization:")
+st.title("🐜 Stigmergic Interaction for Smart Colony Optimization")
 
-with st.expander("What is Colony Optimisation? [click here]"): 
+
+st.write("""
+         
+         Colony Optimization is a probabilistic technique used in optimization problems. Inspired by the behavior of ants searching for food. Initially proposed by Marco Dorigo in 1992, it has been applied to various problems, notably the traveling salesman problem (TSP) which aims to find the shortest possible route visiting a set of cities and returning to the origin city.
+         
+         """)
+with st.expander("More Details on the following Colony Optimisation implementation? [click here]"): 
     st.write("""
     Ant Colony Optimization (ACO) is a probabilistic technique used in optimization problems, 
     inspired by the behavior of ants searching for food. Initially proposed by Marco Dorigo in 1992, 
@@ -137,11 +145,7 @@ st.info("Ant Colony Optimisation - please set your parameters in the left sideba
         
         
 start = st.button("▶️ Start Simulation:")
-st.write(f"Ant Population: {ant_population}")
-st.write(f"Iterations: {iterations}")
-st.write(f"Alpha: {alpha}")
-st.write(f"Beta: {beta}")
-st.write(f"Rho: {rho}")
+st.write(f"Ant Population: {ant_population} / Iterations: {iterations} / Alpha: {alpha} / Beta: {beta} / Rho: {rho}")
 
 if start:
     with st.spinner("Simulation running..."):
@@ -341,18 +345,17 @@ if st.button('▶️ Start/Stop Beta Animation' if not st.session_state['run_bet
         plot_placeholder_beta = st.empty()
         plot_placeholder_beta.image("alpha.png", use_column_width=True)
 
-st.header("2. Impact of Evaporation Rate ρ")
+st.header("Impact of Evaporation Rate ρ")
 st.write("""
 The evaporation rate (ρ) moderates how quickly pheromones fade away, aiding in balancing exploration and exploitation by preventing the algorithm from overly fast convergence on suboptimal paths.
 """)
-st.latex(r"\rho")
 st.write("""
 - **Low ρ**: Pheromones persist longer, reinforcing existing trails and potentially leading to quicker convergence on suboptimal solutions.
 - **High ρ**: Encourages more frequent exploration of new paths by reducing the influence of older pheromone trails, which may slow down convergence but fosters a more thorough search process.
 """)
 
 
-st.header("3. Adapting ACO to a Dynamic Traveling Salesman Problem (DTSP)")
+st.header("Adapting ACO to a Dynamic Traveling Salesman Problem (DTSP)")
 st.write("""
 To adapt ACO for dynamically changing scenarios such as DTSP where cities can be added or removed:
 """)
