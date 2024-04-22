@@ -128,12 +128,12 @@ st.header("⬅️ Run Simulation with specific Parameters")
 st.info("Ant Colony Optimisation - please set your parameters in the left sidebar and then start the simulation by pressing the button - Stephan Nef")
 
 
-with st.expander("See optimal Solution for this case:"):
+#with st.expander("See optimal Solution for this case:"):
     #st.image(r"att48-specs\att48_opt.png")
-    tourfile = ("att48-specs\att48.opt.tour")
-    with open(tourfile, 'r') as file:
-        file_contents = file.read()
-        st.markdown(file_contents)
+    #tourfile = ("att48-specs\att48.opt.tour")
+    #with open(tourfile, 'r') as file:
+    #    file_contents = file.read()
+    #    st.markdown(file_contents)
         
         
 start = st.button("Start Simulation:")
