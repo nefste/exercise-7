@@ -1,10 +1,13 @@
 
 # Stigmergic interaction for Smart Colony Optimization - Simulation App
+[Smart Colony Optimisation](https://smartcolonyoptimisation.streamlit.app/)
 
 ## Overview
 
 This Application simulates an Ant Colony Optimization (ACO) algorithm. 
 It allows users to interactively configure parameters, run simulations, and visualize the impact of different settings on the performance of the ACO algorithm.
+
+The app is available publicly online at [Smart Colony Optimisation](https://smartcolonyoptimisation.streamlit.app/) until the end of this course.
 
 ## Features
 
