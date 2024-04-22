@@ -28,9 +28,9 @@ st.set_page_config(
 st.sidebar.header('⚙️ Colony Parameters')
 ant_population = st.sidebar.number_input('Ant Population', min_value=1, value=48, step=1)
 iterations = st.sidebar.number_input('Iterations', min_value=1, value=10, step=1)
-alpha = st.sidebar.slider('Alpha', min_value=0.0, max_value=10.0, value=1.0, step=0.1)
-beta = st.sidebar.slider('Beta', min_value=0.0, max_value=10.0, value=5.0, step=0.1)
-rho = st.sidebar.slider('Rho', min_value=0.0, max_value=1.0, value=0.5, step=0.05)
+alpha = st.sidebar.slider('Alpha', min_value=0.0, max_value=10.0, value=4.0, step=0.1)
+beta = st.sidebar.slider('Beta', min_value=0.0, max_value=10.0, value=3.0, step=0.1)
+rho = st.sidebar.slider('Rho', min_value=0.0, max_value=1.0, value=0.3, step=0.05)
 scale = (st.sidebar.slider('Lines Plot Scale',min_value=0, max_value=100, value=10, step=10))/100
 
 
@@ -52,17 +52,11 @@ st.write("""
          
          """)
 with st.expander("More Details on the following Colony Optimisation implementation? [click here]"): 
-    st.write("""
-    Ant Colony Optimization (ACO) is a probabilistic technique used in optimization problems, 
-    inspired by the behavior of ants searching for food. Initially proposed by Marco Dorigo in 1992, 
-    it has been applied to various problems, notably the traveling salesman problem (TSP), 
-    which aims to find the shortest possible route visiting a set of cities and returning to the origin city.
-    """)
 
     st.subheader("Pheromone Trail")
     st.write("""
     Ants communicate via pheromones, leaving a trail on their path which is used by other ants to follow. 
-    In ACO, this behavior is simulated to create a search algorithm where paths with stronger pheromone trails 
+    In ACO (Ant Colony Optimisation), this behavior is simulated to create a search algorithm where paths with stronger pheromone trails 
     are more likely to be followed by subsequent ants, influencing the collective decision-making process.
     """)
     
@@ -205,7 +199,8 @@ P = (\text{Number of values for } \alpha) \times
     (\text{Number of values for } \rho)
 """)
 
-st.info("Conducted an empirical simulation using a population of 48 ants across 20 iterations. Below, you can explore the analysis and view the simulation results across various parameters.") 
+st.info("Conducted an empirical simulation using a population of 48 ants across 20 iterations. Below, you can explore the analysis and view the simulation results across various parameters. My best solution so far alpha=4, beta=3, rho=0.3 with distance= 10'974.")
+ 
 st.image("ACO_Parameter_Simulation.png")
 
 
