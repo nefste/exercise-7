@@ -23,7 +23,7 @@ st.set_page_config(
 )
 
 
-st.sidebar.header('Colony Parameters')
+st.sidebar.header('⚙️ Colony Parameters')
 ant_population = st.sidebar.number_input('Ant Population', min_value=1, value=48, step=1)
 iterations = st.sidebar.number_input('Iterations', min_value=1, value=10, step=1)
 alpha = st.sidebar.slider('Alpha', min_value=0.0, max_value=10.0, value=1.0, step=0.1)
@@ -136,7 +136,12 @@ st.info("Ant Colony Optimisation - please set your parameters in the left sideba
     #    st.markdown(file_contents)
         
         
-start = st.button("Start Simulation:")
+start = st.button("▶️ Start Simulation:")
+st.write(f"Ant Population: {ant_population}")
+st.write(f"Iterations: {iterations}")
+st.write(f"Alpha: {alpha}")
+st.write(f"Beta: {beta}")
+st.write(f"Rho: {rho}")
 
 if start:
     with st.spinner("Simulation running..."):
@@ -360,34 +365,35 @@ st.write("""
 st.write("This approach ensures that the ACO remains effective and robust even as the problem space changes dynamically, providing optimized solutions continuously.")
 
 
-
-
-if st.button('Calculate Empirical Simulation [< 20 hours callculation time, not recommended to run, see results above]'):
-    results = []
-    plot_placeholder = st.empty()  
-
-    with st.status("Simulation running...", expanded=True) as status:
-        for alpha in alpha_range:
-            for beta in beta_range:
-                for rho in rho_range:
-                    st.write(f"🏃 Calculating: alpha={alpha}, beta={beta}, rho={rho}")
-                    distance = run_simulation(alpha, beta, rho)
-                    results.append({'alpha': alpha, 'beta': beta, 'rho': rho, 'distance': distance})
-
-                    results_df = pd.DataFrame(results)
-                    file_name = 'aco_simulation_results.xlsx'
-                    results_df.to_excel(file_name, index=False)
-
-                    # Update the plot
-                    fig = px.scatter_3d(results_df, x='alpha', y='beta', z='rho', color='distance',
-                                        color_continuous_scale=px.colors.sequential.Viridis,
-                                        title="Optimization Results Across Parameters")
-                    plot_placeholder.plotly_chart(fig, use_container_width=True)
-        status.update(label="Simulation complete!", state="complete", expanded=False)
+with st.expander("Calculate own empirical Simulation"):
+    st.warning("If you start empirical simulation calculation it will calculate a simulation for α and β within the range from 1 to 10 in increments of 1, and for ρ from 0.1 to 1 in increments of 0.1. This will be heavy to compute and therefore recommended for local use on a GPU. The results will be saved in 'aco_simulation_results.xlsx'")
     
-    st.success("Simulation complete. Review the plot for results.")
-    plot_placeholder.plotly_chart(fig, use_container_width=True)
-    st.dataframe(results_df)
-
+    if st.button('Calculate Empirical Simulation [< 20 hours callculation time, not recommended to run, see results above]'):
+        results = []
+        plot_placeholder = st.empty()  
+    
+        with st.status("Simulation running...", expanded=True) as status:
+            for alpha in alpha_range:
+                for beta in beta_range:
+                    for rho in rho_range:
+                        st.write(f"🏃 Calculating: alpha={alpha}, beta={beta}, rho={rho}")
+                        distance = run_simulation(alpha, beta, rho)
+                        results.append({'alpha': alpha, 'beta': beta, 'rho': rho, 'distance': distance})
+    
+                        results_df = pd.DataFrame(results)
+                        file_name = 'aco_simulation_results.xlsx'
+                        results_df.to_excel(file_name, index=False)
+    
+                        # Update the plot
+                        fig = px.scatter_3d(results_df, x='alpha', y='beta', z='rho', color='distance',
+                                            color_continuous_scale=px.colors.sequential.Viridis,
+                                            title="Optimization Results Across Parameters")
+                        plot_placeholder.plotly_chart(fig, use_container_width=True)
+            status.update(label="Simulation complete!", state="complete", expanded=False)
+        
+        st.success("Simulation complete. Review the plot for results.")
+        plot_placeholder.plotly_chart(fig, use_container_width=True)
+        st.dataframe(results_df)
+    
 
 
