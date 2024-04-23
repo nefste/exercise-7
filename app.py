@@ -122,7 +122,8 @@ with st.expander("More Details on the following Colony Optimisation implementati
 
             # Choose the next city based on the defined probabilities
             return np.random.choice(list(unvisited), p=probabilities)""", language='python')
-
+    
+    st.image("aco_gif.gif")
 
 st.write("---")
 
